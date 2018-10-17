@@ -1,0 +1,73 @@
+table {
+	border-collapse: collapse;
+	width: 800px;
+}
+
+td, th {
+	border: 2px solid #ddd;
+	text-align: left;
+	font-size: 20px;
+	padding: 8px;
+}
+
+tbody tr:hover {
+	background-color: MediumSeaGreen;
+	color: white;
+}
+
+thead {
+	background-color: LightGray;
+}
+
+span {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.pagination {
+    display: inline-block;
+    margin: 20px 0 20px 0;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.pagination a:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.pagination a.isDisabled {
+	color: currentColor;
+	cursor: not-allowed;
+	opacity: 0.5;
+	text-decoration: none;
+}
+
+textarea {
+	resize: none;
+	width: 600px;
+	height: 350px;
+	font-size: 20px;
+	border-style: none; 
+    border-color: Transparent; 
+}
+

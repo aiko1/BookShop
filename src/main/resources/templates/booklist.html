@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head>
+		<title>Books</title>
+	    <link rel="stylesheet" th:href="@{/style.css}" />
+	</head>
+	<body>
+		<form th:action="@{/logout}" method="post" style="margin: 20px 0 20px 0;">
+			<span>user: <span th:text="${username}"></span></span>
+			<input type="submit" value="Sign Out" />
+		</form>
+		
+        <table>
+        	<thead>
+	            <tr>
+	            	<th>ID</th>
+	                <th>Image</th>
+	                <th>Book Title</th>
+	                <th>Price</th>
+	            </tr>
+			</thead>
+			<tbody>
+	            <tr th:each="book : ${booklist}">
+	            	<td th:text="${book.id}"></td>
+	            	<td><img th:src="${book.picture}" height="90"></img></td>
+	                <td>
+	                	<a th:href="@{/booklist/bookdetails/__${book.id}__}"
+	                		th:text="${book.title}"></a>
+	                </td>
+	                <td th:text="${book.price}"></td>
+	            </tr>
+	        </tbody>
+        </table>
+        
+        <!-- PAGINATION -->
+        <!-- реализуем server pagination, чтобы предоставить клиенту только запрашиваемые данные, а не все сразу -->
+		<!-- create links to table pages -->		
+		<div class="pagination">
+			<!-- go to 1st page -->
+			<a th:href="@{/booklist(page=1)}"
+				th:class="${currentPage}==1 ? isDisabled">&laquo;</a>
+			
+			<!-- go to selected page -->
+			<a th:each="i: ${#numbers.sequence(1, pagecount)}" 
+				th:text="${i}"
+				th:href="@{/booklist(page=${i})}"
+				th:class="${i}==${currentPage} ? active"></a>
+			<!-- <a class="active" href="#">2</a>  -->
+			
+			<!-- go to last page -->
+			<a th:href="@{/booklist(page=${pagecount})}"
+				th:class="${currentPage}==${pagecount} ? isDisabled">&raquo;</a>
+		</div>
+
+	</body>
+</html>
